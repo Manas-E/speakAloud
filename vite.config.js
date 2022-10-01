@@ -14,7 +14,9 @@ export default defineConfig({
         '@aws-amplify/predictions',           
         '@aws-amplify/*',
         'aws-amplify',
-        "@aws-amplify/core"
+        "@aws-amplify/core",
+        "@aws-amplify/ui-react",
+        "@aws-amplify/api"
       ]
   }}
 })
