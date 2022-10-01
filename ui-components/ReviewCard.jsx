@@ -12,12 +12,12 @@ import MyIcon from "./MyIcon";
 import '../src/App.css'
 
 export default function ReviewCard(props) {
-  const { overrides, ...rest } = props;
+  const { overrides, title, date, description, imageUrl,setShowMusicPlayer,saveToLib, ...rest } = props;
   return (
     <div style={{display:"flex",justifyContent:"center"}}>
     <Flex
       gap="0"
-      width="560px"
+      width="460px"
       alignItems="center"
       position="relative"
       padding="0px 0px 0px 0px"
@@ -29,9 +29,9 @@ export default function ReviewCard(props) {
       <Flex
         gap="24px"
         direction="column"
-        width="560px"
+        width="460px"
         grow="1"
-        basis="560px"
+        basis="460px"
         alignSelf="stretch"
         position="relative"
         padding="32px 32px 32px 32px"
@@ -49,13 +49,12 @@ export default function ReviewCard(props) {
           {...getOverrideProps(overrides, "Title")}
         >
           <Flex
-            gap="200px"
-            width="526px"
             height="24px"
             alignItems="flex-start"
             shrink="0"
             position="relative"
             padding="0px 44px 0px 0px"
+            justifyContent="space-between"
             {...getOverrideProps(overrides, "Frame")}
           >
             <Text
@@ -68,11 +67,11 @@ export default function ReviewCard(props) {
               display="flex"
               direction="column"
               justifyContent="flex-start"
-              shrink="0"
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Classic Long Sleeve T-Shirt"
+              children={title}
+
               {...getOverrideProps(overrides, "Classic Long Sleeve T-Shirt")}
             ></Text>
             <MyIcon
@@ -111,30 +110,12 @@ export default function ReviewCard(props) {
             grow="1"
             basis="244px"
             position="relative"
-            padding="0px 0px 0px 0px"
+            padding="16px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="832 34th Ave, "
-            {...getOverrideProps(overrides, "832 34th Ave,")}
+            children={date}
+            {...getOverrideProps(overrides,date )}
           ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="14px"
-            fontWeight="400"
-            color="rgba(48,64,80,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            width="244px"
-            grow="1"
-            basis="244px"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children=" Seattle, WA 98122"
-            {...getOverrideProps(overrides, "Seattle, WA 98122")}
-          ></Text>
+     
         </Flex>
         <Divider
           height="1px"
@@ -174,44 +155,23 @@ export default function ReviewCard(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Information about this product."
+            className="line-clamp"
+            children={description}
             {...getOverrideProps(
               overrides,
-              "Information about this product.29766836"
-            )}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(92,102,112,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0.01px"
-            shrink="0"
-            alignSelf="stretch"
-            objectFit="cover"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Information about this product."
-            {...getOverrideProps(
-              overrides,
-              "Information about this product.29766837"
+              {description}
             )}
           ></Text>
         </Flex>
         <Flex
-          gap="150px"
+          gap="50px"
           alignItems="flex-start"
           shrink="0"
-          alignSelf="stretch"
+          alignSelf="space-between"
           objectFit="cover"
           position="relative"
           padding="24px 0px 24px 0px"
+          justifyContent="space-between"
           {...getOverrideProps(overrides, "Buttons")}
         >
           <Badge
@@ -229,7 +189,9 @@ export default function ReviewCard(props) {
             lineHeight="12px"
             size="small"
             variation="default"
-            children="New!"
+            children="Save"
+            className="badge"
+            onClick={saveToLib}
             {...getOverrideProps(overrides, "Badge29766838")}
           ></Badge>
           <Badge
@@ -247,7 +209,9 @@ export default function ReviewCard(props) {
             lineHeight="12px"
             size="small"
             variation="default"
-            children="New!"
+            children="Listen"
+            className="badge"
+            onClick={()=>setShowMusicPlayer(true)}
             {...getOverrideProps(overrides, "Badge34592694")}
           ></Badge>
         </Flex>

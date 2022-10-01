@@ -13,18 +13,18 @@ import extractor from "../utils/extract";
 import LoadingIndicator from "../utils/Loader/LoadingIndicator";
 
 export default function HeroLayout4(props) {
-  const { overrides, ...rest } = props;
+  const { overrides, setExtract, ...rest } = props;
 
   const [loading,setLoading] = useState(false);
   const articleUrl  = useRef();
 
   let extract = async ()=>{
-    // setLoading(true);
-    // let data = await extractor(articleUrl.current.value)
-    // setExtract(data.text)
-    // setLoading(false);
+    setLoading(true);
+    let data = await extractor(articleUrl.current.value)
+    setExtract(data)
+    setLoading(false);
 
-    // console.log(data.text)
+    console.log(data.text)
   }
 
   

@@ -7,7 +7,8 @@ import config from "../aws-exports"
 import  { AmplifyProvider } from "@aws-amplify/ui-react"
 import Predictions from '@aws-amplify/predictions';
 import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
-import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
+
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
 
 
 Amplify.configure(config)

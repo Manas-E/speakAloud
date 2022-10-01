@@ -45,7 +45,7 @@ function blobToBase64(blob) {
     });
 };
 
-export const saveToS3 = async (blob,name='a')=>{
+export const saveToS3 = async (data64,name='a')=>{
    let blob1 = new Blob([new Uint8Array(blob.audioStream)],{type:'audio/webm'})
 //    const formData = new FormData();
 //    formData.append('audio-file', blob1);
@@ -66,15 +66,14 @@ export const saveToS3 = async (blob,name='a')=>{
 //    }, (err) => console.log({err}));
 
     console.log(source,"<<")
-    // const storageResult = await Storage.put(name, file, {
-    //     level: 'public',
-    //     type: 'audio/webm'
-    //   })
+    const storageResult = await Storage.put(name, data64, {
+        level: 'public',
+        type: 'string'
+      })
 
-    //   const get = await Storage.get(name)
-    //   console.log(get)
-    // return storageResult
-    return formData
+      const get = await Storage.get(name)
+      console.log(get)
+    return storageResult
 }
 
 
