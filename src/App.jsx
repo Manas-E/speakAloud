@@ -84,12 +84,15 @@ const  [s3Url, setS3Url] = useState();
 const saveToLib =async ()=>{
 if(!extractedData || !s3Url)
   return null
+let s3 =  await saveToS3(s3Url,user.username)
+podcastProps = { title: extractedData.title, user: user.username, s3Url: s3, description:extractedData.text,imageUrl:extractedData.images[0],date: extractedData.date_published || getDate(), blogUrl: extractedData.url};
+let mutation = API.graphql(graphqlOperation(createPodcast, {input: {...podcastProps}})).then((res)=>{
 
-podcastProps = { title: extractedData.title, user: user.attributes.name, s3Url: s3Url, description:extractedData.text,imageUrl:extractedData.images[0],date: extractedData.date_published || getDate(), blogUrl: extractedData.url};
-let mutation = await API.graphql(graphqlOperation(createPodcast, {input: {...podcastProps}}));
-// console.log(saveToS3(recordingOriginal),"=====",mutation)
+  alert('Successfully saved to your lib');
 
-console.log(mutation)
+}).catch((err)=>{
+  alert(err.message)
+})
 
 }
 async function extract(){ 
@@ -101,19 +104,15 @@ async function extract(){
     const recordingOriginal = await convertToSpeech(extractedData.text.slice(0,3000)); 
     if(recordingOriginal && recordingOriginal.speech.url){
       setSrc(recordingOriginal.speech.url);
-      console.log(typeof recordingOriginal.speech.url, typeof recordingOriginal.audioStream)
 
     }
     let blob1 = new Blob([new Uint8Array(recordingOriginal.audioStream)],{type:'audio/mp3'})
 
     await blobToDataURL(blob1, (res)=>{
-      console.log(res)
       setS3Url(res)
 
     })
-  
-    console.log("extract renedered ", recordingOriginal, source,mutation)
-  
+    
 }
 
 const [showMusicPlayer,setShowMusicPlayer] = useState(false); 
@@ -149,9 +148,8 @@ useEffect(()=>{
       <NavBar user={user} signOut={signOut}></NavBar>
       <HeroLayout4 setExtract={setExtract} ></HeroLayout4>
     {extractedData &&   <ReviewCard saveToLib={saveToLib} setShowMusicPlayer={setShowMusicPlayer} title={extractedData.title} description={extractedData.text} date={extractedData.date_published || getDate()} imageUrl={extractedData.images[0]}></ReviewCard> }
-      <StandardCard></StandardCard>
       {showMusicPlayer &&<MusicPlayer></MusicPlayer>}
-      <Icons type="Play"></Icons>
+   
     </div>
   )
 }

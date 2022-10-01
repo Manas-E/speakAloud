@@ -23,8 +23,6 @@ export default function HeroLayout4(props) {
     let data = await extractor(articleUrl.current.value)
     setExtract(data)
     setLoading(false);
-
-    console.log(data.text)
   }
 
   

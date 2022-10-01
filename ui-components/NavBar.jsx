@@ -93,7 +93,7 @@ export default function NavBar(props) {
             {...getOverrideProps(overrides, "Badge34514580")}
           ></Badge>
           { user.username ? <>
-            <Badge
+            {/* <Badge
             display="flex"
             gap="10px"
             width="fit-content"
@@ -110,7 +110,7 @@ export default function NavBar(props) {
             children="Library"
             className="badge"
             {...getOverrideProps(overrides, "Badge34514578")}
-          ></Badge>
+          ></Badge> */}
         <Avatar round={true} size="50px" color={Avatar.getRandomColor('sitebase', colors)} name={user.attributes.name} />
 
           

@@ -5,7 +5,7 @@
  **************************************************************************/
 
 /* eslint-disable */
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Badge, Divider, Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
@@ -13,8 +13,16 @@ import '../src/App.css'
 
 export default function ReviewCard(props) {
   const { overrides, title, date, description, imageUrl,setShowMusicPlayer,saveToLib, ...rest } = props;
+  
+  const reviewRef = useRef();
+
+useEffect(() => {
+  reviewRef.current.scrollIntoView() 
+
+},[])
+
   return (
-    <div style={{display:"flex",justifyContent:"center"}}>
+    <div style={{display:"flex",justifyContent:"center"}} id="review-card"   ref={reviewRef}>
     <Flex
       gap="0"
       width="460px"
@@ -171,10 +179,10 @@ export default function ReviewCard(props) {
           objectFit="cover"
           position="relative"
           padding="24px 0px 24px 0px"
-          justifyContent="space-between"
+          justifyContent="center"
           {...getOverrideProps(overrides, "Buttons")}
         >
-          <Badge
+          {/* <Badge
             display="flex"
             gap="10px"
             width="150px"
@@ -193,7 +201,7 @@ export default function ReviewCard(props) {
             className="badge"
             onClick={saveToLib}
             {...getOverrideProps(overrides, "Badge29766838")}
-          ></Badge>
+          ></Badge> */}
           <Badge
             display="flex"
             gap="10px"
