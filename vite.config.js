@@ -16,7 +16,8 @@ export default defineConfig({
         'aws-amplify',
         "@aws-amplify/core",
         "@aws-amplify/ui-react",
-        "@aws-amplify/api"
+        "@aws-amplify/api",
+        /@aws-amplify.*/,
       ]
   }}
 })
