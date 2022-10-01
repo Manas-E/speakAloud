@@ -13,7 +13,7 @@ export default defineConfig({
       external: [            
         '@aws-amplify/predictions',           
         '@aws-amplify/*',
-      
+        'aws-amplify'
       ]
   }}
 })
