@@ -7,5 +7,13 @@ export default defineConfig({
   "types": ["node"],
   server: {
     port: 3000
-  }
+  },
+  build: {
+    rollupOptions: {
+      external: [            
+        '@aws-amplify/predictions',           
+        '@aws-amplify/*',
+      
+      ]
+  }}
 })
