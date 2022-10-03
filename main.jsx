@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import "@aws-amplify/ui-react/styles.css"
-import config from "../aws-exports"
+import config from "./aws-exports"
 import  { AmplifyProvider } from "@aws-amplify/ui-react"
 import Predictions from '@aws-amplify/predictions';
 import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';

@@ -8,7 +8,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Text, TextField } from "@aws-amplify/ui-react";
-import '../src/App.css'
+import '../App.css'
 import extractor from "../utils/extract";
 import LoadingIndicator from "../utils/Loader/LoadingIndicator";
 

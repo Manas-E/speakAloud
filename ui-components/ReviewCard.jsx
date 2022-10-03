@@ -9,7 +9,7 @@ import React, { useEffect, useRef } from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Badge, Divider, Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
-import '../src/App.css'
+import '../App.css'
 
 export default function ReviewCard(props) {
   const { overrides, title, date, description, imageUrl,setShowMusicPlayer,saveToLib, ...rest } = props;

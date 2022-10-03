@@ -9,7 +9,7 @@ import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Badge, Flex, Icon, Image, Text } from "@aws-amplify/ui-react";
 import logo from '/logo_bg.png'
-import '../src/App.css'
+import '../App.css'
 import Avatar from "react-avatar";
 import colors from '../utils/data.json'
 

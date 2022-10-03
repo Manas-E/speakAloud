@@ -1,22 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import { convert } from 'html-to-text'
-import axios from 'axios'
-import extractor from '../utils/extract'
-import './App.css'
-import HeroLayout4 from '../ui-components/HeroLayout4'
-import StandardCard from '../ui-components/StandardCard'
 
-import Icons from '../ui-components/Icons'
+import './App.css'
+import HeroLayout4 from './ui-components/HeroLayout4'
+
 import "@aws-amplify/ui-react/styles.css"
 import { ComponentPropsToStylePropsMap, withAuthenticator } from "@aws-amplify/ui-react"
-import NavBar from '../ui-components/NavBar'
-import { convertToSpeech, playAudio, saveToS3 } from '../utils/helpers'
+import NavBar from './ui-components/NavBar'
+import { convertToSpeech, playAudio, saveToS3 } from './utils/helpers'
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 import music from './a.mp3'
-import ReviewCard from '../ui-components/ReviewCard'
-import getDate from '../utils/getDate'
+import ReviewCard from './ui-components/ReviewCard'
+import getDate from './utils/getDate'
 import { createPodcast, updatePodcast, deletePodcast } from './graphql/mutations';
 import { API, graphqlOperation } from 'aws-amplify';
 
