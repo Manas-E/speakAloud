@@ -76,6 +76,11 @@ function blobToDataURL(blob, callback) {
 let podcastProps;
 const  [s3Url, setS3Url] = useState();
 
+const sanitizeText = (text)=>{
+ return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+
+}
+
 const saveToLib =async ()=>{
 if(!extractedData || !s3Url)
   return null
@@ -96,7 +101,8 @@ async function extract(){
       return null;
   
     let audio = new Audio();
-    const recordingOriginal = await convertToSpeech(extractedData.text.slice(0,3000)); 
+    let tts = sanitizeText(extractedData.text.slice(0,3000))
+    const recordingOriginal = await convertToSpeech(tts); 
     if(recordingOriginal && recordingOriginal.speech.url){
       setSrc(recordingOriginal.speech.url);
 

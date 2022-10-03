@@ -10,6 +10,7 @@ import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
 
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 
+console.log( import.meta.env.AWSCONFIG)
 
 Amplify.configure(config)
 Amplify.register(Predictions);
